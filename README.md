@@ -40,11 +40,7 @@ A modern, web-based application that helps students and developers understand dy
 
 ## 🚀 Live Demo
 
-<<<<<<< HEAD
 **[Try the DP Visualizer Online](https://your-deployment-url.com)**
-=======
-**[Try the DP Visualizer Online](https://dpvisualizer.netlify.app/)**
->>>>>>> 660e616742297c363d8ebb6857a83c6ef94bbb02
 
 ## 🛠️ Technology Stack
 
@@ -171,7 +167,4 @@ npm run build
 npm run build
 # Follow GitHub Pages setup instructions
 ```
-<<<<<<< HEAD
 
-=======
->>>>>>> 660e616742297c363d8ebb6857a83c6ef94bbb02
