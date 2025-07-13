@@ -40,7 +40,7 @@ A modern, web-based application that helps students and developers understand dy
 
 ## 🚀 Live Demo
 
-**[Try the DP Visualizer Online](https://your-deployment-url.com)**
+**[Try the DP Visualizer Online](https://dpvisualizer.netlify.app/)**
 
 ## 🛠️ Technology Stack
 
