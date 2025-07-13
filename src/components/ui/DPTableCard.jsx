@@ -60,31 +60,31 @@ const DPTableCard = ({
         {/* Scrollable table container */}
         <div className="overflow-x-auto">
           <div className="inline-block min-w-full">
-            <div className="border border-border-light rounded-lg overflow-hidden">
-              <div className="min-w-0">
-                {columns.map((column, columnIndex) => (
-                  <div 
-                    key={columnIndex} 
-                    className={`flex border-b border-border-light bg-surface-50 ${columnIndex === columns.length - 1 ? 'border-b-0' : ''}`}
-                  >
-                    <div className="flex-shrink-0 w-20 text-center text-body-sm font-medium text-text-secondary py-2 px-2 border-r border-border-light bg-surface-50">
-                      {column.header}
-                    </div>
-                    {column.cells.map((cell, cellIndex) => {
-                      const value = cell.getValue ? cell.getValue(cellIndex) : cell.value;
-                      const colorClass = cell.getColor ? cell.getColor(cellIndex) : cell.colorClass;
-                      
-                      return (
-                        <div
-                          key={cellIndex}
-                          className={`flex-shrink-0 w-20 text-center py-2 px-2 border-r border-border-light last:border-r-0 border-2 transition-educational font-mono text-body-sm ${colorClass}`}
-                        >
-                          {value}
-                        </div>
-                      );
-                    })}
+          <div className="border border-border-light rounded-lg overflow-hidden">
+            <div className="min-w-0">
+              {columns.map((column, columnIndex) => (
+                <div 
+                  key={columnIndex} 
+                  className={`flex border-b border-border-light bg-surface-50 ${columnIndex === columns.length - 1 ? 'border-b-0' : ''}`}
+                >
+                  <div className="flex-shrink-0 w-20 text-center text-body-sm font-medium text-text-secondary py-2 px-2 border-r border-border-light bg-surface-50">
+                    {column.header}
                   </div>
-                ))}
+                  {column.cells.map((cell, cellIndex) => {
+                    const value = cell.getValue ? cell.getValue(cellIndex) : cell.value;
+                    const colorClass = cell.getColor ? cell.getColor(cellIndex) : cell.colorClass;
+                    
+                    return (
+                      <div
+                        key={cellIndex}
+                        className={`flex-shrink-0 w-20 text-center py-2 px-2 border-r border-border-light last:border-r-0 border-2 transition-educational font-mono text-body-sm ${colorClass}`}
+                      >
+                        {value}
+                      </div>
+                    );
+                  })}
+                </div>
+              ))}
               </div>
             </div>
           </div>

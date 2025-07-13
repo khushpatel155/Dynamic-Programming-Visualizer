@@ -94,13 +94,13 @@ const StepLogPanel = ({
             ({visibleSteps.length} / {stepLog.length} steps)
           </span>
         </div>
-        <Button
-          variant="ghost"
-          onClick={onToggleCollapse}
-          iconName="ChevronDown"
-          size="sm"
-          className="text-text-secondary hover:text-text-primary"
-        />
+          <Button
+            variant="ghost"
+            onClick={onToggleCollapse}
+            iconName="ChevronDown"
+            size="sm"
+            className="text-text-secondary hover:text-text-primary"
+          />
       </div>
 
       {/* Log Content */}

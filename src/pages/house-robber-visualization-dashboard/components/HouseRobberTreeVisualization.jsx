@@ -147,7 +147,7 @@ const HouseRobberTreeVisualization = ({
           return 'fill-success-700';
         default:
           return 'fill-success-700';
-      }
+        }
     }
     
     return 'fill-accent-foreground';

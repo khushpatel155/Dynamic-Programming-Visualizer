@@ -204,7 +204,7 @@ const ProblemSelectionDashboard = () => {
               {filteredProblems.map((problem) => (
                 <div
                   key={problem.id}
-                    className="relative bg-white border border-gray-200 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group cursor-pointer transform hover:scale-[1.025] focus-within:scale-[1.025] flex flex-col h-full"
+                    className="relative bg-white border border-gray-200 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group cursor-pointer transform hover:scale-[1.025] focus-within:scale-[1.025] active:scale-[0.98] touch-manipulation flex flex-col h-full"
                     tabIndex={0}
                     role="button"
                     aria-label={`Select ${problem.name}`}
@@ -217,6 +217,14 @@ const ProblemSelectionDashboard = () => {
                       if (e.key === 'Enter' || e.key === ' ') {
                         handleProblemSelect(problem.route);
                       }
+                    }}
+                    onTouchStart={(e) => {
+                      // Add touch feedback
+                      e.currentTarget.style.transform = 'scale(0.98)';
+                    }}
+                    onTouchEnd={(e) => {
+                      // Remove touch feedback
+                      e.currentTarget.style.transform = '';
                     }}
                 >
                   {/* Problem Header */}

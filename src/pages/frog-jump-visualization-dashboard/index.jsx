@@ -9,6 +9,9 @@ import AnimationControlPanel from '../algorithm-visualization-dashboard/componen
 import StepLogPanel from '../algorithm-visualization-dashboard/components/StepLogPanel';
 import AlgorithmCodeDisplay from '../../components/ui/AlgorithmCodeDisplay';
 
+// Import utilities
+import useKeyboardControls from '../../utils/useKeyboardControls';
+
 const FrogJumpVisualizationDashboard = () => {
   // Core state management
   const [inputValues, setInputValues] = useState([10, 5, 20, 0, 15]);
@@ -503,6 +506,19 @@ const FrogJumpVisualizationDashboard = () => {
     };
   }, [animationInterval]);
 
+  // Keyboard controls
+  useKeyboardControls({
+    onStepForward: handleStepForward,
+    onStepBackward: handleStepBackward,
+    onPlay: handlePlay,
+    onPause: handlePause,
+    isPlaying,
+    canStepForward: currentStep < totalSteps - 1,
+    canStepBackward: currentStep > 0,
+    isCalculating,
+    enabled: totalSteps > 0
+  });
+
   // Determine layout based on algorithm
   const showRecursionTree = selectedAlgorithm !== 'tabulation';
   const showDPTable = selectedAlgorithm === 'memoization' || selectedAlgorithm === 'tabulation';
@@ -623,13 +639,13 @@ const FrogJumpVisualizationDashboard = () => {
 
               {/* Step Log Panel */}
               <div>
-                <StepLogPanel
-                  stepLog={stepLog}
-                  currentStep={currentStep}
+                  <StepLogPanel
+                    stepLog={stepLog}
+                    currentStep={currentStep}
                   algorithmType={selectedAlgorithm}
-                  isCollapsed={stepLogCollapsed}
-                  onToggleCollapse={() => setStepLogCollapsed(!stepLogCollapsed)}
-                />
+                    isCollapsed={stepLogCollapsed}
+                    onToggleCollapse={() => setStepLogCollapsed(!stepLogCollapsed)}
+                  />
               </div>
             </div>
         </ResponsiveLayoutManager>

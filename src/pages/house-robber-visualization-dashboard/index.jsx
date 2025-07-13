@@ -14,6 +14,9 @@ import HouseRobberTableVisualization from './components/HouseRobberTableVisualiz
 import StepLogPanel from '../algorithm-visualization-dashboard/components/StepLogPanel';
 import AlgorithmCodeDisplay from '../../components/ui/AlgorithmCodeDisplay';
 
+// Import utilities
+import useKeyboardControls from '../../utils/useKeyboardControls';
+
 const HouseRobberVisualizationDashboard = () => {
   // Core state management
   const [inputValues, setInputValues] = useState([2, 7, 9, 3, 1]);
@@ -338,11 +341,11 @@ const HouseRobberVisualizationDashboard = () => {
       } else {
         // Multiple nodes - distribute across full width
         const spacing = 800 / (nodesAtDepth.length + 1);
-        
-        nodesAtDepth.forEach((node, index) => {
-          node.x = spacing * (index + 1);
-          node.y = y;
-        });
+      
+      nodesAtDepth.forEach((node, index) => {
+        node.x = spacing * (index + 1);
+        node.y = y;
+      });
       }
     });
     
@@ -512,6 +515,19 @@ const HouseRobberVisualizationDashboard = () => {
     };
   }, [animationInterval]);
 
+  // Keyboard controls
+  useKeyboardControls({
+    onStepForward: handleStepForward,
+    onStepBackward: handleStepBackward,
+    onPlay: handlePlay,
+    onPause: handlePause,
+    isPlaying,
+    canStepForward: currentStep < totalSteps - 1,
+    canStepBackward: currentStep > 0,
+    isCalculating,
+    enabled: totalSteps > 0
+  });
+
   // Determine layout based on algorithm
   const showRecursionTree = selectedAlgorithm !== 'tabulation';
   const showDPTable = selectedAlgorithm === 'memoization' || selectedAlgorithm === 'tabulation';
@@ -614,7 +630,7 @@ const HouseRobberVisualizationDashboard = () => {
                     </VisualizationPanel>
                   </div>
                 )}
-                
+
                 {/* DP Table (always after tree) */}
                 {showDPTable && (
                   <div className="w-full mb-6">

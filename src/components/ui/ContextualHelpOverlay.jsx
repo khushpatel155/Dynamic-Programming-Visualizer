@@ -90,6 +90,7 @@ const ContextualHelpOverlay = ({ isOpen, onClose, algorithmType = 'recursive' })
     { id: 'overview', label: 'Overview', icon: 'BookOpen' },
     { id: 'steps', label: 'Step Guide', icon: 'List' },
     { id: 'tips', label: 'Tips', icon: 'Lightbulb' },
+    { id: 'shortcuts', label: 'Shortcuts', icon: 'Keyboard' },
     { id: 'log', label: 'Step Log', icon: 'FileText' }
   ];
 
@@ -197,6 +198,83 @@ const ContextualHelpOverlay = ({ isOpen, onClose, algorithmType = 'recursive' })
                       <div className="w-4 h-4 bg-accent rounded"></div>
                       <span className="text-body-sm text-text-secondary">Current step or active computation</span>
                     </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+
+      case 'shortcuts':
+        return (
+          <div className="space-y-6">
+            <div>
+              <h3 className="text-heading-md text-text-primary mb-3">Keyboard Shortcuts</h3>
+              <p className="text-body-md text-text-secondary mb-4">
+                Use these keyboard shortcuts to navigate through the algorithm visualization more efficiently.
+              </p>
+            </div>
+
+            <div className="space-y-4">
+              <div className="p-4 bg-surface-50 rounded-lg border border-border">
+                <h4 className="text-heading-sm text-text-primary mb-3">Navigation Controls</h4>
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-3">
+                      <kbd className="px-3 py-1 bg-surface-100 border border-border rounded text-sm font-mono">←</kbd>
+                      <span className="text-body-sm text-text-secondary">Previous step</span>
+                    </div>
+                    <span className="text-caption text-text-muted">Go back one step</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-3">
+                      <kbd className="px-3 py-1 bg-surface-100 border border-border rounded text-sm font-mono">→</kbd>
+                      <span className="text-body-sm text-text-secondary">Next step</span>
+                    </div>
+                    <span className="text-caption text-text-muted">Advance one step</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-3">
+                      <kbd className="px-3 py-1 bg-surface-100 border border-border rounded text-sm font-mono">Space</kbd>
+                      <span className="text-body-sm text-text-secondary">Play/Pause</span>
+                    </div>
+                    <span className="text-caption text-text-muted">Toggle animation</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="p-4 bg-primary-50 rounded-lg border border-primary-200">
+                <div className="flex items-start space-x-3">
+                  <Icon name="Info" size={20} className="text-primary mt-1 flex-shrink-0" />
+                  <div>
+                    <h5 className="text-body-md font-medium text-primary mb-2">Alternative Keys</h5>
+                    <p className="text-body-sm text-text-secondary mb-3">
+                      You can also use these alternative keys for navigation:
+                    </p>
+                    <div className="space-y-2">
+                      <div className="flex items-center space-x-3">
+                        <kbd className="px-2 py-1 bg-primary-100 border border-primary-300 rounded text-xs font-mono">h</kbd>
+                        <span className="text-body-sm text-text-secondary">Previous step (vim-style)</span>
+                      </div>
+                      <div className="flex items-center space-x-3">
+                        <kbd className="px-2 py-1 bg-primary-100 border border-primary-300 rounded text-xs font-mono">l</kbd>
+                        <span className="text-body-sm text-text-secondary">Next step (vim-style)</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="p-4 bg-warning-50 rounded-lg border border-warning-200">
+                <div className="flex items-start space-x-3">
+                  <Icon name="AlertTriangle" size={20} className="text-warning-600 mt-1 flex-shrink-0" />
+                  <div>
+                    <h5 className="text-body-md font-medium text-warning-700 mb-2">Important Notes</h5>
+                    <ul className="space-y-1 text-body-sm text-text-secondary">
+                      <li>• Keyboard shortcuts are disabled when typing in input fields</li>
+                      <li>• Controls are only active when there are steps to navigate</li>
+                      <li>• Shortcuts are disabled during calculation to prevent conflicts</li>
+                    </ul>
                   </div>
                 </div>
               </div>

@@ -14,6 +14,9 @@ import DPTableVisualization from './components/DPTableVisualization';
 import StepLogPanel from './components/StepLogPanel';
 import AlgorithmCodeDisplay from '../../components/ui/AlgorithmCodeDisplay';
 
+// Import utilities
+import useKeyboardControls from '../../utils/useKeyboardControls';
+
 const AlgorithmVisualizationDashboard = () => {
   // Core state management
   const [inputValue, setInputValue] = useState('5');
@@ -438,6 +441,19 @@ const AlgorithmVisualizationDashboard = () => {
       }
     };
   }, [animationInterval]);
+
+  // Keyboard controls
+  useKeyboardControls({
+    onStepForward: handleStepForward,
+    onStepBackward: handleStepBackward,
+    onPlay: handlePlay,
+    onPause: handlePause,
+    isPlaying,
+    canStepForward: currentStep < totalSteps - 1,
+    canStepBackward: currentStep > 0,
+    isCalculating,
+    enabled: totalSteps > 0
+  });
 
   // Determine layout based on algorithm
   const showRecursionTree = selectedAlgorithm !== 'tabulation';

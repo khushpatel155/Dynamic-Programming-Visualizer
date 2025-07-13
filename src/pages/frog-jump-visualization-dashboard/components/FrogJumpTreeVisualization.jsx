@@ -255,7 +255,7 @@ const FrogJumpTreeVisualization = ({
 
             const isMobile = currentPositionedData.containerWidth < 640;
             const edgeOffset = isMobile ? 25 : 30;
-            
+
             return (
               <g key={`edge-${index}`}>
                 <line

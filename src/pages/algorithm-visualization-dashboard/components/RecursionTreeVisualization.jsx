@@ -230,7 +230,7 @@ const RecursionTreeVisualization = ({
 
             const isMobile = currentPositionedData.containerWidth < 640;
             const edgeOffset = isMobile ? 25 : 30;
-            
+
             return (
               <line
                 key={`edge-${index}`}
