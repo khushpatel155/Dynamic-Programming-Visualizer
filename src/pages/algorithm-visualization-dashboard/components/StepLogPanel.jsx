@@ -9,7 +9,6 @@ const StepLogPanel = ({
   isCollapsed = false,
   onToggleCollapse 
 }) => {
-  const [autoScroll, setAutoScroll] = useState(true);
   const logContainerRef = useRef(null);
 
   // Show only steps up to current step for progressive display
@@ -17,10 +16,10 @@ const StepLogPanel = ({
 
   // Auto-scroll to bottom when new steps are added
   useEffect(() => {
-    if (autoScroll && logContainerRef.current) {
+    if (logContainerRef.current) {
       logContainerRef.current.scrollTop = logContainerRef.current.scrollHeight;
     }
-  }, [visibleSteps, autoScroll]);
+  }, [visibleSteps]);
 
   const getStepIcon = (type) => {
     switch (type) {
@@ -95,25 +94,13 @@ const StepLogPanel = ({
             ({visibleSteps.length} / {stepLog.length} steps)
           </span>
         </div>
-        <div className="flex items-center space-x-2">
-          <button
-            onClick={() => setAutoScroll(!autoScroll)}
-            className={`flex items-center space-x-2 px-3 py-1 rounded text-body-sm transition-educational ${
-              autoScroll 
-                ? 'bg-primary-100 text-primary-700' :'bg-surface-100 text-text-secondary hover:bg-surface-200'
-            }`}
-          >
-            <Icon name="ArrowDown" size={14} />
-            <span>Auto-scroll</span>
-          </button>
-          <Button
-            variant="ghost"
-            onClick={onToggleCollapse}
-            iconName="ChevronDown"
-            size="sm"
-            className="text-text-secondary hover:text-text-primary"
-          />
-        </div>
+        <Button
+          variant="ghost"
+          onClick={onToggleCollapse}
+          iconName="ChevronDown"
+          size="sm"
+          className="text-text-secondary hover:text-text-primary"
+        />
       </div>
 
       {/* Log Content */}
@@ -179,16 +166,6 @@ const StepLogPanel = ({
             <span>Algorithm: {algorithmType}</span>
           </div>
         </div>
-        
-        <Button
-          variant="outline"
-          onClick={() => {/* Clear log functionality */}}
-          iconName="Trash2"
-          size="sm"
-          disabled={visibleSteps.length === 0}
-        >
-          Clear Log
-        </Button>
       </div>
     </div>
   );

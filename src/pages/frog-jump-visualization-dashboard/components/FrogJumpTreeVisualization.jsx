@@ -37,7 +37,7 @@ const FrogJumpTreeVisualization = ({
     
     // Calculate SVG height based on depth
     const maxDepth = Math.max(...depths.keys());
-    const levelHeight = 100;
+    const levelHeight = containerWidth < 640 ? 80 : 100; // Smaller spacing on mobile
     const svgHeight = Math.max(400, (maxDepth + 1) * levelHeight + 100);
     
     // Position nodes with full width utilization
@@ -50,7 +50,7 @@ const FrogJumpTreeVisualization = ({
         nodesAtDepth[0].y = y;
       } else {
         // Multiple nodes - distribute across full width
-        const padding = 80; // Minimum padding from edges
+        const padding = containerWidth < 640 ? 40 : 80; // Smaller padding on mobile
         const availableWidth = containerWidth - (2 * padding);
         const spacing = availableWidth / (nodesAtDepth.length - 1);
         
@@ -191,7 +191,7 @@ const FrogJumpTreeVisualization = ({
   if (!isVisible || !treeData) {
     return (
       <div className="bg-surface border border-border rounded-lg shadow-educational">
-        <div className="flex items-center justify-between p-4 border-b border-border">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-4 border-b border-border gap-3">
           <div className="flex items-center space-x-3">
             <Icon name="GitBranch" size={20} className="text-primary" />
             <h3 className="text-heading-sm text-text-primary">Recursion Tree</h3>
@@ -208,23 +208,23 @@ const FrogJumpTreeVisualization = ({
 
   return (
     <div ref={containerRef} className="bg-surface border border-border rounded-lg shadow-educational">
-      <div className="flex items-center justify-between p-4 border-b border-border">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-4 border-b border-border gap-3">
         <div className="flex items-center space-x-3">
           <Icon name="GitBranch" size={20} className="text-primary" />
           <h3 className="text-heading-sm text-text-primary">Recursion Tree</h3>
         </div>
-        <div className="flex items-center space-x-4 text-body-sm">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-body-sm">
           <div className="flex items-center space-x-2">
             <div className="w-3 h-3 bg-success-100 border border-success-600 rounded"></div>
-            <span className="text-text-secondary">Completed</span>
+            <span className="text-text-secondary text-xs sm:text-sm">Completed</span>
           </div>
           <div className="flex items-center space-x-2">
             <div className="w-3 h-3 bg-primary-100 border border-primary-600 rounded"></div>
-            <span className="text-text-secondary">Memoized</span>
+            <span className="text-text-secondary text-xs sm:text-sm">Memoized</span>
           </div>
           <div className="flex items-center space-x-2">
             <div className="w-3 h-3 bg-accent border border-accent-600 rounded"></div>
-            <span className="text-text-secondary">Active</span>
+            <span className="text-text-secondary text-xs sm:text-sm">Active</span>
           </div>
         </div>
       </div>
@@ -253,13 +253,16 @@ const FrogJumpTreeVisualization = ({
 
             const edgeLabel = getEdgeLabel(edge);
 
+            const isMobile = currentPositionedData.containerWidth < 640;
+            const edgeOffset = isMobile ? 25 : 30;
+            
             return (
               <g key={`edge-${index}`}>
                 <line
                   x1={fromNode.x}
-                  y1={fromNode.y + 30}
+                  y1={fromNode.y + edgeOffset}
                   x2={toNode.x}
-                  y2={toNode.y - 30}
+                  y2={toNode.y - edgeOffset}
                   stroke="var(--color-border-dark)"
                   strokeWidth="2"
                   className="transition-educational"
@@ -290,22 +293,26 @@ const FrogJumpTreeVisualization = ({
             // Always show solve(index)=result format when result is available
             const displayText = hasResult ? `solve(${node.index})=${nodeResult}` : `solve(${node.index})`;
             
+            const isMobile = currentPositionedData.containerWidth < 640;
+            const nodeRadius = isMobile ? 25 : 30;
+            const fontSize = isMobile ? 'text-xs' : 'text-sm';
+            
             return (
               <g key={node.id} className="transition-educational">
                 {/* Node circle */}
                 <circle
                   cx={node.x}
                   cy={node.y}
-                  r="30"
+                  r={nodeRadius}
                   className={`${getNodeColor(node)} stroke-2 transition-educational`}
                 />
                 
                 {/* Function call text */}
                 <text
                   x={node.x}
-                  y={node.y + 5}
+                  y={node.y + (isMobile ? 3 : 5)}
                   textAnchor="middle"
-                  className={`text-sm font-medium ${getTextColor(node)}`}
+                  className={`${fontSize} font-medium ${getTextColor(node)}`}
                 >
                   {displayText}
                 </text>

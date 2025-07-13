@@ -457,7 +457,7 @@ const AlgorithmVisualizationDashboard = () => {
           <div className="w-full px-4 sm:px-6 lg:px-8 py-6">
               
               {/* Problem Description */}
-              <div className="mb-8 bg-surface border border-border rounded-lg shadow-educational p-6">
+              <div className="mb-6 bg-surface border border-border rounded-lg shadow-educational p-6">
                 <div className="space-y-6">
                   <div>
                     <h2 className="text-heading-lg font-medium text-text-primary mb-3">Fibonacci Sequence</h2>
@@ -489,7 +489,7 @@ const AlgorithmVisualizationDashboard = () => {
               </div>
 
               {/* C++ Code Implementation */}
-              <div className="mb-8">
+              <div className="mb-6">
                 <AlgorithmCodeDisplay problemType="fibonacci" selectedAlgorithm={selectedAlgorithm} />
               </div>
               
@@ -525,11 +525,11 @@ const AlgorithmVisualizationDashboard = () => {
               </div>
 
               {/* Visualization Area */}
-              <div className={`space-y-6 mb-6`}>
+              <div className="mb-6">
                 
                 {/* Recursion Tree - Full Width */}
                 {showRecursionTree && (
-                  <div className="w-full">
+                  <div className="w-full mb-6">
                     <VisualizationPanel title="Recursion Tree Visualization">
                       <RecursionTreeVisualization
                         treeData={treeData}
@@ -544,7 +544,7 @@ const AlgorithmVisualizationDashboard = () => {
 
                 {/* DP Table - Full Width Below Tree */}
                 {(selectedAlgorithm === 'memoization' || selectedAlgorithm === 'tabulation') && (
-                  <div className="w-full">
+                  <div className="w-full mb-6">
                     <VisualizationPanel title="Dynamic Programming Table">
                       <DPTableVisualization
                         tableData={tableData}

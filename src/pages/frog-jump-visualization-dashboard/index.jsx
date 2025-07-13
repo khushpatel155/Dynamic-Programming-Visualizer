@@ -521,7 +521,7 @@ const FrogJumpVisualizationDashboard = () => {
           <div className="w-full px-4 sm:px-6 lg:px-8 py-6">
               
               {/* Problem Description */}
-              <div className="mb-8 bg-surface border border-border rounded-lg shadow-educational p-6">
+              <div className="mb-6 bg-surface border border-border rounded-lg shadow-educational p-6">
                 <div className="space-y-6">
                   <div>
                     <h2 className="text-heading-lg font-medium text-text-primary mb-3">Frog Jump with K Distances</h2>
@@ -553,7 +553,7 @@ const FrogJumpVisualizationDashboard = () => {
               </div>
 
               {/* C++ Code Implementation */}
-              <div className="mb-8">
+              <div className="mb-6">
                 <AlgorithmCodeDisplay problemType="frog-jump" selectedAlgorithm={selectedAlgorithm} />
               </div>
 
@@ -590,12 +590,11 @@ const FrogJumpVisualizationDashboard = () => {
                 />
               </div>
 
-              {/* Visualization Panels */}
-              <div className="space-y-6">
-                
+              {/* Visualization Area */}
+              <div className="mb-6">
                 {/* Recursion Tree - Full Width */}
                 {showRecursionTree && (
-                  <div className="w-full">
+                  <div className="w-full mb-6">
                     <FrogJumpTreeVisualization
                       treeData={treeData}
                       currentStep={currentStep}
@@ -610,7 +609,7 @@ const FrogJumpVisualizationDashboard = () => {
 
                 {/* DP Table - Full Width Below Tree */}
                 {showDPTable && (
-                  <div className="w-full">
+                  <div className="w-full mb-6">
                     <FrogJumpTableVisualization
                       tableData={tableData}
                       currentStep={currentStep}
@@ -620,16 +619,17 @@ const FrogJumpVisualizationDashboard = () => {
                     />
                   </div>
                 )}
+              </div>
 
-                {/* Step Log */}
-                <div className="w-full">
-                  <StepLogPanel
-                    stepLog={stepLog}
-                    currentStep={currentStep}
-                    isCollapsed={stepLogCollapsed}
-                    onToggleCollapse={() => setStepLogCollapsed(!stepLogCollapsed)}
-                  />
-                </div>
+              {/* Step Log Panel */}
+              <div>
+                <StepLogPanel
+                  stepLog={stepLog}
+                  currentStep={currentStep}
+                  algorithmType={selectedAlgorithm}
+                  isCollapsed={stepLogCollapsed}
+                  onToggleCollapse={() => setStepLogCollapsed(!stepLogCollapsed)}
+                />
               </div>
             </div>
         </ResponsiveLayoutManager>

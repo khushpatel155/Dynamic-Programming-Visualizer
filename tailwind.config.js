@@ -85,8 +85,8 @@ module.exports = {
       },
       fontFamily: {
         'heading': ['Roboto Mono', 'Fira Code', 'JetBrains Mono', 'Monaco', 'Consolas', 'monospace'],
-        'body': ['Inter', 'system-ui', 'sans-serif'],
-        'caption': ['Inter', 'system-ui', 'sans-serif'],
+        'body': ['Roboto', 'system-ui', 'sans-serif'],
+        'caption': ['Roboto', 'system-ui', 'sans-serif'],
         'mono': ['Fira Code', 'JetBrains Mono', 'Monaco', 'Consolas', 'monospace'],
       },
       fontSize: {

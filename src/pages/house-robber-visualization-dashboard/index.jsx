@@ -530,7 +530,7 @@ const HouseRobberVisualizationDashboard = () => {
           <div className="w-full px-4 sm:px-6 lg:px-8 py-6">
               
               {/* Problem Description */}
-              <div className="mb-8 bg-surface border border-border rounded-lg shadow-educational p-6">
+              <div className="mb-6 bg-surface border border-border rounded-lg shadow-educational p-6">
                 <div className="space-y-6">
                   <div>
                     <h2 className="text-heading-lg font-medium text-text-primary mb-3">House Robber</h2>
@@ -562,7 +562,7 @@ const HouseRobberVisualizationDashboard = () => {
               </div>
 
               {/* C++ Code Implementation */}
-              <div className="mb-8">
+              <div className="mb-6">
                 <AlgorithmCodeDisplay problemType="house-robber" selectedAlgorithm={selectedAlgorithm} />
               </div>
               
@@ -598,10 +598,10 @@ const HouseRobberVisualizationDashboard = () => {
               </div>
 
               {/* Visualization Area */}
-              <div className="flex gap-6 mb-6">
+              <div className="mb-6">
                 {/* Recursion Tree */}
                 {showRecursionTree && (
-                  <div className="w-full">
+                  <div className="w-full mb-6">
                     <VisualizationPanel title="Recursion Tree Visualization">
                       <HouseRobberTreeVisualization
                         treeData={treeData}
@@ -614,21 +614,22 @@ const HouseRobberVisualizationDashboard = () => {
                     </VisualizationPanel>
                   </div>
                 )}
+                
+                {/* DP Table (always after tree) */}
+                {showDPTable && (
+                  <div className="w-full mb-6">
+                    <VisualizationPanel title="Dynamic Programming Table">
+                      <HouseRobberTableVisualization
+                        tableData={tableData}
+                        currentStep={currentStep}
+                        algorithmType={selectedAlgorithm}
+                        inputValues={inputValues}
+                        executionTrace={executionTrace}
+                      />
+                    </VisualizationPanel>
+                  </div>
+                )}
               </div>
-              {/* DP Table (always after tree) */}
-              {showDPTable && (
-                <div className="mb-6">
-                  <VisualizationPanel title="Dynamic Programming Table">
-                    <HouseRobberTableVisualization
-                      tableData={tableData}
-                      currentStep={currentStep}
-                      algorithmType={selectedAlgorithm}
-                      inputValues={inputValues}
-                      executionTrace={executionTrace}
-                    />
-                  </VisualizationPanel>
-                </div>
-              )}
 
               {/* Step Log Panel */}
               <div>

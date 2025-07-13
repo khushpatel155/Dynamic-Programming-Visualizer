@@ -84,11 +84,11 @@ const ResponsiveLayoutManager = ({ children, algorithmType = 'recursive' }) => {
 
       switch (layoutMode) {
         case 'stacked':
-          return `${baseClasses} w-full mb-4`;
+          return `${baseClasses} w-full mb-6`;
         case 'adaptive':
           return `${baseClasses} w-full mb-6`;
         default:
-          return `${baseClasses} w-full`;
+          return `${baseClasses} w-full mb-6`;
       }
     },
 
@@ -97,18 +97,18 @@ const ResponsiveLayoutManager = ({ children, algorithmType = 'recursive' }) => {
       
       switch (layoutMode) {
         case 'stacked':
-          return `${baseClasses} w-full mb-4 p-4`;
+          return `${baseClasses} w-full mb-6 p-4`;
         case 'adaptive':
           return `${baseClasses} w-full mb-6 p-4`;
         default:
-          return `${baseClasses} w-80 p-4 h-fit`;
+          return `${baseClasses} w-80 p-4 h-fit mb-6`;
       }
     },
 
     getGridClasses: () => {
       switch (layoutMode) {
         case 'stacked':
-          return 'flex flex-col space-y-4';
+          return 'flex flex-col space-y-6';
         case 'adaptive':
           return 'flex flex-col space-y-6';
         default:

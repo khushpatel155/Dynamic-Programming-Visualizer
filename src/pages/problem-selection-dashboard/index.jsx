@@ -142,7 +142,7 @@ const ProblemSelectionDashboard = () => {
         <meta name="description" content="Interactive platform for learning dynamic programming through visual algorithm demonstrations" />
       </Helmet>
 
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen bg-white">
         <ApplicationHeader />
         
         <div className="pt-16">
@@ -150,20 +150,20 @@ const ProblemSelectionDashboard = () => {
             
             {/* Hero Section */}
             <div className="text-center mb-12">
-              <h1 className="text-3xl md:text-4xl font-medium text-text-primary mb-4">
+              <h1 className="text-3xl md:text-4xl font-medium text-gray-900 mb-4">
                 Dynamic Programming Visualizer
               </h1>
-              <p className="text-lg text-text-secondary max-w-3xl mx-auto">
+              <p className="text-lg text-gray-700 max-w-3xl mx-auto">
                 Master dynamic programming concepts through interactive visualizations. 
                 Choose a problem below to explore recursion, memoization, and tabulation approaches.
               </p>
             </div>
 
             {/* Search and Filter Section */}
-            <div className="mb-8 bg-surface border border-border rounded-lg shadow-educational p-6">
+            <div className="mb-8 bg-white border border-gray-200 rounded-lg shadow-lg p-6">
               <div className="flex flex-col md:flex-row gap-4">
                 <div className="flex-1">
-                  <label htmlFor="search" className="block text-body-sm font-medium text-text-primary mb-2">
+                  <label htmlFor="search" className="block text-body-sm font-medium text-gray-900 mb-2">
                     Search Problems
                   </label>
                   <Input
@@ -176,14 +176,14 @@ const ProblemSelectionDashboard = () => {
                   />
                 </div>
                 <div className="md:w-48">
-                  <label htmlFor="difficulty" className="block text-body-sm font-medium text-text-primary mb-2">
+                  <label htmlFor="difficulty" className="block text-body-sm font-medium text-gray-900 mb-2">
                     Difficulty Level
                   </label>
                   <select
                     id="difficulty"
                     value={selectedDifficulty}
                     onChange={(e) => setSelectedDifficulty(e.target.value)}
-                    className="w-full px-3 py-2 border border-border rounded-md bg-surface text-text-primary focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   >
                     {difficulties.map(difficulty => (
                       <option key={difficulty} value={difficulty}>
@@ -197,14 +197,14 @@ const ProblemSelectionDashboard = () => {
 
             {/* 1D DP Problems Section */}
             <div className="mb-8">
-              <h2 className="text-2xl font-medium text-text-primary mb-6">
+              <h2 className="text-2xl font-medium text-gray-900 mb-6">
                 1D DP Problems
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
               {filteredProblems.map((problem) => (
                 <div
                   key={problem.id}
-                    className="relative bg-surface border border-border rounded-lg shadow-educational hover:shadow-xl transition-all duration-300 overflow-hidden group cursor-pointer transform hover:scale-[1.025] focus-within:scale-[1.025] flex flex-col h-full"
+                    className="relative bg-white border border-gray-200 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group cursor-pointer transform hover:scale-[1.025] focus-within:scale-[1.025] flex flex-col h-full"
                     tabIndex={0}
                     role="button"
                     aria-label={`Select ${problem.name}`}
@@ -220,7 +220,7 @@ const ProblemSelectionDashboard = () => {
                     }}
                 >
                   {/* Problem Header */}
-                  <div className={`${problem.accentColor} p-6 border-b border-border h-56 flex flex-col`}>
+                  <div className={`${problem.accentColor} p-6 border-b border-gray-200 h-56 flex flex-col`}>
                     <div className="flex items-start justify-between mb-4">
                       <div className={`p-3 rounded-lg ${problem.color}`}>
                         <Icon name={problem.icon} size={24} className="text-white" />
@@ -229,10 +229,10 @@ const ProblemSelectionDashboard = () => {
                         {problem.difficulty}
                       </span>
                     </div>
-                    <h3 className="text-heading-md font-medium text-text-primary mb-2">
+                    <h3 className="text-heading-md font-medium text-gray-900 mb-2">
                       {problem.name}
                     </h3>
-                    <p className="text-body-sm text-text-secondary flex-1">
+                    <p className="text-body-sm text-gray-700 flex-1">
                       {problem.description}
                     </p>
                   </div>
@@ -241,12 +241,12 @@ const ProblemSelectionDashboard = () => {
                   <div className="p-6 space-y-4 flex-1 flex flex-col">
                     {/* Complexity Info */}
                     <div className="space-y-2">
-                      <h4 className="text-body-sm font-medium text-text-primary">Complexity</h4>
+                      <h4 className="text-body-sm font-medium text-gray-900">Complexity</h4>
                       <div className="flex flex-wrap gap-2">
-                        <span className="px-2 py-1 bg-surface-100 text-text-secondary rounded text-caption font-mono">
+                        <span className="px-2 py-1 bg-gray-100 text-gray-700 rounded text-caption font-mono">
                           Time: {problem.complexity.time}
                         </span>
-                        <span className="px-2 py-1 bg-surface-100 text-text-secondary rounded text-caption font-mono">
+                        <span className="px-2 py-1 bg-gray-100 text-gray-700 rounded text-caption font-mono">
                           Space: {problem.complexity.space}
                         </span>
                       </div>
@@ -254,7 +254,7 @@ const ProblemSelectionDashboard = () => {
 
                     {/* Key Concepts */}
                     <div className="space-y-2">
-                      <h4 className="text-body-sm font-medium text-text-primary">Key Concepts</h4>
+                      <h4 className="text-body-sm font-medium text-gray-900">Key Concepts</h4>
                       <div className="flex flex-wrap gap-2">
                         {problem.concepts.map((concept, index) => (
                           <span 
@@ -289,9 +289,9 @@ const ProblemSelectionDashboard = () => {
             {/* Empty State */}
             {filteredProblems.length === 0 && (
               <div className="text-center py-16">
-                <Icon name="Search" size={48} className="text-text-muted mx-auto mb-4" />
-                <h3 className="text-heading-md text-text-primary mb-2">No problems found</h3>
-                <p className="text-body-md text-text-secondary">
+                <Icon name="Search" size={48} className="text-gray-400 mx-auto mb-4" />
+                <h3 className="text-heading-md text-gray-900 mb-2">No problems found</h3>
+                <p className="text-body-md text-gray-700">
                   Try adjusting your search terms or difficulty filter
                 </p>
               </div>

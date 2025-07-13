@@ -65,15 +65,6 @@ const ApplicationHeader = () => {
             >
               <span className="hidden sm:inline">Help</span>
             </Button>
-            
-            <Button
-              variant="ghost"
-              onClick={() => window.open('https://github.com', '_blank')}
-              iconName="Github"
-              className="text-text-secondary hover:text-text-primary"
-            >
-              <span className="hidden sm:inline">Source</span>
-            </Button>
           </div>
         </div>
       </div>
